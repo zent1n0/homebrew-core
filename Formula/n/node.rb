@@ -70,6 +70,13 @@ class Node < Formula
     sha256 "8b469a56d85a61abd846e78690623ce956b4d49ae56f15ac76dea0dce3bd4b2b"
   end
 
+  # Backport https://github.com/nodejs/node/pull/59067
+  # https://github.com/nodejs/node/issues/59057
+  patch do
+    url "https://github.com/nodejs/node/commit/fc4a8af4305562aaef19a05c5b7bdfb7400b7a55.patch?full_index=1"
+    sha256 "da632e815b454f003cd1d401a50ea340f63541fccf00ddd28f561b54d0ac1979"
+  end  
+
   def install
     ENV.llvm_clang if OS.mac? && DevelopmentTools.clang_build_version <= 1699
 
